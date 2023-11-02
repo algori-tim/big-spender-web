@@ -1,0 +1,18 @@
+.button {
+  width: 150px; /* Set the width of the rectangle */
+  height: 35px; /* Set the height of the rectangle */
+  background-color: #cf9905; /* Set the background color */
+  border-radius: 10px; /* Set the border radius to create rounded corners */
+  color: rgb(255, 253, 225);
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.button[data-style='secondary'] {
+  background-color: rgb(255, 253, 225);
+  color: #cf9905; /* Set the background color */
+}

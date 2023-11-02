@@ -1,0 +1,75 @@
+[
+  {
+    "name": "Joint FF",
+    "subCategories": ["Eating Out", "Activities"]
+  },
+  {
+    "name": "Clare FF",
+    "subCategories": ["Clothes", "Books", "Chickens", "Games"]
+  },
+  {
+    "name": "Tim FF",
+    "subCategories": ["Music", "Computers", "Games"]
+  },
+  {
+    "name": "Sundries",
+    "subCategories": [
+      "Birthdays",
+      "Christmas",
+      "Thanksgiving",
+      "Saint Patty's Day",
+      "Mardi Gras",
+      "4th of July",
+      "Memorial Day",
+      "Cinco de Mayo",
+      "Labor Day",
+      "Facilitating Others"
+    ]
+  },
+  {
+    "name": "Home",
+    "subCategories": [
+      "Maintenance",
+      "Lawn and Garden",
+      "Furniture",
+      "Decor",
+      "Home Improvement",
+      "Chickens"
+    ]
+  },
+  {
+    "name": "Vacation",
+    "subCategories": [
+      "Campsites",
+      "Flights",
+      "Lodging",
+      "Food",
+      "Souvenirs",
+      "Gifts",
+      "Ground Transportation",
+      "Activities"
+    ]
+  },
+  {
+    "name": "Car",
+    "subCategories": ["Oil Changes", "Tires", "Washes", "Unexpected Repairs"]
+  },
+  {
+    "name": "Unplanned Expenses",
+    "subCategories": ["Medical"]
+  },
+  {
+    "name": "Sinking",
+    "subCategories": []
+  },
+  {
+    "name": "Unallocated",
+    "subCategories": [
+      "Groceries",
+      "Bath and Body",
+      "Clothing",
+      "Gas",
+      "Hair Cuts"
+    ]
+  }
+]

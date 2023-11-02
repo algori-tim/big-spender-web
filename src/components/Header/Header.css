@@ -1,0 +1,23 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+}
+
+.header-image {
+  width: 80px; /* Adjust the width and height as needed */
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.buttons-container {
+  display: flex;
+}
