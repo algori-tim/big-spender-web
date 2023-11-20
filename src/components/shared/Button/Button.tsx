@@ -4,7 +4,7 @@ export interface INavButtonProps {
   label: string
   style: ButtonStyle
   icon?: string
-  onClick: () => void
+  onClick: (e: any) => void
 }
 
 export enum ButtonStyle {

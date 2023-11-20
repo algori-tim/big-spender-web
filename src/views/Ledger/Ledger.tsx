@@ -4,7 +4,7 @@ import { clearExpensesFromLocal, saveExpensesToLocal } from '../../Helpers/Stora
 import { AccountCategory } from '../../types/accountCategory.type'
 import { getAccountsCategories } from '../../Helpers/DataHelpers'
 import './Ledger.css'
-import Button, { ButtonStyle } from '../shared/Button/Button'
+import Button, { ButtonStyle } from '../../components/shared/Button/Button'
 
 const getGuid = (): string => {
   return Math.floor(Math.random() * 0x10000).toString(16)
@@ -34,7 +34,8 @@ const Ledger = () => {
     getLocalExpenses()
   }, [])
 
-  const handleAddItem = () => {
+  const handleAddItem = (e: Event): void => {
+    e.preventDefault()
     const dateElement = document.getElementById('date-input') as HTMLInputElement
     const accountElement = document.getElementById('account-input') as HTMLInputElement
     const expenseTypeElement = document.getElementById('expense-type-input') as HTMLInputElement
@@ -72,11 +73,11 @@ const Ledger = () => {
   }
 
   return categories ? (
-    <>
+    <article>
       <form>
         <div className='inputs-container'>
           <div>
-            <label htmlFor='date-input input'>Date:</label>
+            <label htmlFor='date-input'>Date:</label>
             <input
               type='date'
               id='date-input'
@@ -106,36 +107,54 @@ const Ledger = () => {
           </div>
           <div>
             <label htmlFor='amount-input input'>Amount:</label>
-            <input type='number' id='amount-input' className='input' />
+            <input type='number' id='amount-input' className='input' step='.01' />
           </div>
           <Button label='Add Item' style={ButtonStyle.primary} onClick={handleAddItem} />
         </div>
       </form>
-      <table className='table'>
-        <thead>
-          <tr className='header-row'>
-            <th>Date</th>
-            <th>Account</th>
-            <th>Expense Type</th>
-            <th>Cost</th>
-          </tr>
-        </thead>
-        <tbody>
-          {expenses.map((expense) => (
-            <tr key={getGuid()} className='body-row'>
-              <td>{expense.date}</td>
-              <td>{expense.account}</td>
-              <td>{expense.expenseType}</td>
-              <td>{expense.amount}</td>
+      <div className='table-container'>
+        <table className='table'>
+          <thead>
+            <tr className='header-row'>
+              <th>Date</th>
+              <th>Account</th>
+              <th>Expense Type</th>
+              <th>Cost</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {expenses.map((expense) => (
+              <tr key={getGuid()} className='body-row'>
+                <td>{expense.date}</td>
+                <td>{expense.account}</td>
+                <td>{expense.expenseType}</td>
+                <td>$ {expense.amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className='totals-grid'>
+        {categories.map((category) => (
+          <div className='totals-grid-item'>
+            <div>
+              <h4 className='totals-grid-item-header'>{category.name}</h4>
+              <p className='totals-grid-item-header'>
+                {expenses.filter((expense) => expense.account === category.name).reduce((x, y) => x + y.amount, 0)}
+              </p>
+            </div>
+            <div className='totals-grid-item-body'>
+              <label htmlFor='reconciled-amount'> Reconciled Amount:</label>
+              <input type='number' id='reconciled-amount' className='input'></input>
+            </div>
+          </div>
+        ))}
+      </div>
       <div className='button-container'>
         <Button label='Clear Data' style={ButtonStyle.secondary} onClick={handleClearData} />
         <Button label='Save Data' style={ButtonStyle.primary} onClick={handleSaveData} />
       </div>
-    </>
+    </article>
   ) : (
     <h1>Loading...</h1>
   )
