@@ -1,6 +1,6 @@
 .navContainer {
   flex: 0 0 200px;
-  height: 100vh;
+  height: 100dvh;
   background-color: rebeccapurple;
   display: flex;
 }

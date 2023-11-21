@@ -3,4 +3,5 @@ export type Expense = {
   account: string
   expenseType: string
   amount: number
+  note: string
 }
