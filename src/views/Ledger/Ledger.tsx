@@ -120,7 +120,7 @@ const Ledger = () => {
           <input type='text' id='note-input' className='input' />
         </div>
         <div className=''>
-          <button className='add-item-button' onClick={() => handleAddItem}>
+          <button className='add-item-button ledger-button' onClick={() => handleAddItem}>
             <span className='material-symbols-outlined'>add_task</span>
           </button>
         </div>
@@ -176,15 +176,17 @@ const Ledger = () => {
                 </tr>
               </tbody>
             </table>
-            <button className='reconcile-button'>
-              Reconcile<span className='material-symbols-outlined'>add_task</span>
-            </button>
+            <button className='reconcile-button ledger-button'>Reconcile</button>
           </div>
         ))}
       </div>
       <div className='button-container'>
-        <Button label='Clear Data' style={ButtonStyle.secondary} onClick={handleClearData} />
-        <Button label='Save Data' style={ButtonStyle.primary} onClick={handleSaveData} />
+        <button className='clear-data-button ledger-button' onClick={() => handleClearData}>
+          <span className='material-symbols-outlined'>delete_history</span>
+        </button>
+        <button className='save-data-button ledger-button' onClick={() => handleSaveData}>
+          <span className='material-symbols-outlined'>save</span>
+        </button>
       </div>
     </article>
   ) : (

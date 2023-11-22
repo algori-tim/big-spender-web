@@ -1,5 +1,10 @@
 article {
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 95%;
+  justify-content: space-around;
 }
 
 .inputs-container {
@@ -7,7 +12,6 @@ article {
   align-items: flex-end;
   justify-content: center;
   gap: 2svw;
-  margin: 4svh auto;
   width: 85%;
 }
 
@@ -23,9 +27,6 @@ label {
 .table-container {
   height: 50vh;
   width: 85%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 15px;
   overflow-y: scroll;
   background-color: #e4e4e4;
 }
@@ -47,7 +48,6 @@ label {
 }
 
 .button-container {
-  margin: 20px auto;
   display: flex;
   justify-content: flex-end;
   gap: 15px;
@@ -61,14 +61,16 @@ label {
   gap: 15px;
   width: 90%;
   overflow-x: scroll;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .totals-item {
   background-color: #e4dfdc;
   padding: 5px;
   border-radius: 5px;
+  text-align: end;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 #reconciled-amount {
@@ -78,7 +80,7 @@ label {
 .totals-item-header {
   text-align: center;
   border-bottom: 1px solid darkgray;
-  margin-bottom: 5px;
+  width: 100%;
 }
 .reconcile-data {
   text-align: center;
@@ -88,39 +90,36 @@ label {
   text-align: end;
 }
 
-.reconcile-button {
-  text-transform: uppercase;
-  font-weight: bold;
-  display: block;
-  margin: 0 auto;
-  height: 30px;
-  width: 100%;
+.reconcile-button,
+.add-item-button,
+.save-data-button {
   background-color: #99e699;
+}
+
+.clear-data-button {
+  background-color: #e69999;
+}
+
+.ledger-button {
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 15px;
-}
-
-.add-item-button {
-  width: 40px;
   text-transform: uppercase;
   font-weight: bold;
   display: block;
   height: 30px;
-  background-color: #99e699;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100px;
 }
 
-.add-item-button:hover,
-.add-item-button:focus,
-.reconcile-button:hover,
-.reconcile-button:focus {
+.ledger-button:hover,
+.ledger-button:focus {
   box-shadow: 0 0 5px 3px #b8d6d3;
   background-color: #1e941e;
   color: #e4dfdc;
+}
+
+.reconcile-button {
+  width: 100%;
 }
