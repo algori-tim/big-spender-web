@@ -68,7 +68,7 @@ const Ledger = () => {
       saveExpensesToLocal(newExpensese)
       return newExpensese
     })
-
+    noteElement.value = ''
     dateElement.focus()
   }
 
@@ -85,46 +85,44 @@ const Ledger = () => {
 
   return categories ? (
     <article>
-      <form>
-        <div className='inputs-container'>
-          <div>
-            <label htmlFor='date-input'>Date:</label>
-            <input
-              type='date'
-              id='date-input'
-              className='input'
-              defaultValue={new Date().toISOString().split('T')[0]}
-            />
-          </div>
-          <div>
-            <label htmlFor='account-input'>Account:</label>
-            <select id='account-input' className='input' onChange={(e) => setSelectedCategoty(e.target.selectedIndex)}>
-              {categories.map((cat) => (
-                <option key={cat.name} value={cat.name}>
-                  {cat.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor='expense-type-input'>Expense Type:</label>
-            <select id='expense-type-input' className='input'>
-              {categories[selectedCategoty]?.subCategories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor='amount-input'>Amount:</label>
-            <input type='number' id='amount-input' className='input' step='.01' />
-          </div>
-          <div>
-            <label htmlFor='note-input'>Note:</label>
-            <input type='text' id='note-input' className='input' />
-          </div>
-          <Button label='Add Item' style={ButtonStyle.primary} onClick={handleAddItem} />
+      <form className='inputs-container'>
+        <h3 className='imputs-label'>ADD NEW ITEM</h3>
+        <div>
+          <label htmlFor='date-input'>Date:</label>
+          <input type='date' id='date-input' className='input' defaultValue={new Date().toISOString().split('T')[0]} />
+        </div>
+        <div>
+          <label htmlFor='account-input'>Account:</label>
+          <select id='account-input' className='input' onChange={(e) => setSelectedCategoty(e.target.selectedIndex)}>
+            {categories.map((cat) => (
+              <option key={cat.name} value={cat.name}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor='expense-type-input'>Expense Type:</label>
+          <select id='expense-type-input' className='input'>
+            {categories[selectedCategoty]?.subCategories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor='amount-input'>Amount:</label>
+          <input type='number' id='amount-input' className='input' step='.01' />
+        </div>
+        <div>
+          <label htmlFor='note-input'>Note:</label>
+          <input type='text' id='note-input' className='input' />
+        </div>
+        <div className=''>
+          <button className='add-item-button' onClick={() => handleAddItem}>
+            <span className='material-symbols-outlined'>add_task</span>
+          </button>
         </div>
       </form>
       <div className='table-container'>
@@ -135,6 +133,7 @@ const Ledger = () => {
               <th className='ledger-row-data'>Account</th>
               <th className='ledger-row-data'>Expense Type</th>
               <th className='ledger-row-data'>Cost</th>
+              <th className='ledger-row-data'>Note</th>
             </tr>
           </thead>
           <tbody>
@@ -144,6 +143,9 @@ const Ledger = () => {
                 <td className='ledger-row-data'>{expense.account}</td>
                 <td className='ledger-row-data'>{expense.expenseType}</td>
                 <td className='ledger-row-data'>$ {expense.amount}</td>
+                <td className='ledger-row-data'>
+                  {expense.note.length > 20 ? `${expense.note.slice(0, 20)}...` : expense.note}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -174,7 +176,9 @@ const Ledger = () => {
                 </tr>
               </tbody>
             </table>
-            <button className='reconcile-button'>Reconcile</button>
+            <button className='reconcile-button'>
+              Reconcile<span className='material-symbols-outlined'>add_task</span>
+            </button>
           </div>
         ))}
       </div>
