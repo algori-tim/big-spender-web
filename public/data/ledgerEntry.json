@@ -1,0 +1,40 @@
+{
+  "date": "2023-11-1",
+  "expenses": [
+    {
+      "account": "Joint FF",
+      "date": "2023-11-1",
+      "expenseType": "Eating Out",
+      "amount": 50,
+      "note": "some note..."
+    },
+    {
+      "account": "Joint FF",
+      "date": "2023-11-2",
+      "expenseType": "Eating Out",
+      "amount": 50,
+      "note": "some note..."
+    },
+    {
+      "account": "Car",
+      "date": "2023-11-2",
+      "expenseType": "Oil Change",
+      "amount": 25,
+      "note": "some other note..."
+    }
+  ],
+  "totals": [
+    {
+      "account": "Joint FF",
+      "amountOwed": 100,
+      "amountPaid": 100,
+      "carryover": false
+    },
+    {
+      "account": "Car",
+      "amountOwed": 25,
+      "amountPaid": 15,
+      "carryover": true
+    }
+  ]
+}

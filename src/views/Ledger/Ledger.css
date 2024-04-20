@@ -73,7 +73,7 @@ label {
   flex-direction: column;
 }
 
-#reconciled-amount {
+.reconciled-amount {
   width: 80px;
 }
 

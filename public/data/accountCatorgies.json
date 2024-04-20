@@ -5,11 +5,11 @@
   },
   {
     "name": "Clare FF",
-    "subCategories": ["Clothes", "Books", "Chickens", "Games"]
+    "subCategories": ["Clothes", "Books", "Chickens", "Games", "Misc"]
   },
   {
     "name": "Tim FF",
-    "subCategories": ["Music", "Computers", "Games"]
+    "subCategories": ["Music", "Computers", "Games", "Education", "Misc"]
   },
   {
     "name": "Sundries",
@@ -23,7 +23,9 @@
       "Memorial Day",
       "Cinco de Mayo",
       "Labor Day",
-      "Facilitating Others"
+      "Facilitating Others",
+      "Entertainment",
+      "Misc"
     ]
   },
   {
@@ -34,7 +36,9 @@
       "Furniture",
       "Decor",
       "Home Improvement",
-      "Chickens"
+      "Chickens",
+      "Electronics",
+      "Camper"
     ]
   },
   {
@@ -47,7 +51,9 @@
       "Souvenirs",
       "Gifts",
       "Ground Transportation",
-      "Activities"
+      "Activities",
+      "Supplies",
+      "Trip Insurance"
     ]
   },
   {
@@ -60,16 +66,10 @@
   },
   {
     "name": "Sinking",
-    "subCategories": []
+    "subCategories": ["AAA"]
   },
   {
     "name": "Unallocated",
-    "subCategories": [
-      "Groceries",
-      "Bath and Body",
-      "Clothing",
-      "Gas",
-      "Hair Cuts"
-    ]
+    "subCategories": ["Groceries", "Bath and Body", "Clothing", "Gas", "Hair Cuts", "Utilities"]
   }
 ]

@@ -1,8 +1,8 @@
-import { Carryover } from './carryover.type'
 import { Expense } from './expense.type'
+import { Carryover } from './carryover.type'
 
 export type LedgerEntry = {
-  reconciledDate: Date
+  date: Date
   carryovers: Carryover[]
   expenses: Expense[]
 }
