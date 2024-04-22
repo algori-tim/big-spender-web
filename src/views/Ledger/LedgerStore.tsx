@@ -3,12 +3,16 @@ import { Expense } from '../../types/expense.type'
 import { subscribeWithSelector, persist } from 'zustand/middleware'
 import { LedgerEntry } from '../../types/ledgerEntry.type'
 import { Carryover } from '../../types/carryover.type'
+import { AccountCategory } from '../../types/accountCategory.type'
 
 interface LedgerState {
   expenses: Expense[]
   accountTotals: AccountTotals
+  accountCategories: AccountCategory[]
+  setAccountCategories(categories: AccountCategory[]): void
   addExpense(expense: Expense): void
   deleteExpense(expense: Expense): void
+  updateExpense(expense: Expense): void
   clearExpenses(): void
   reconcileAccountBy(account: string, amount: number): void
   clearAccountTotals(): void
@@ -45,19 +49,20 @@ export const useLedgerStore = create<LedgerState>()(
       (set, get) => ({
         expenses: [],
         accountTotals: {},
+        accountCategories: [],
+        setAccountCategories(categories: AccountCategory[]) {
+          set({ accountCategories: categories })
+        },
         addExpense(expense: Expense) {
           set((state) => {
             const newAccountTotals = addToAccountTotalsHandler(state.accountTotals, expense.account, expense.amount)
             const newExpenses = [...state.expenses, expense]
-
-            // saveExpensesToLocal(newExpenses)
 
             return {
               ...state,
               expenses: newExpenses,
               accountTotals: newAccountTotals,
             }
-            // saveExpenseMapToLocal(expenseMap)
           })
         },
         deleteExpense(expense: Expense) {
@@ -69,7 +74,30 @@ export const useLedgerStore = create<LedgerState>()(
             )
             const newExpenses = state.expenses.filter((item) => item.id !== expense.id)
 
-            // saveExpensesToLocal(newExpenses)
+            return {
+              ...state,
+              expenses: newExpenses,
+              accountTotals: newAccountTotals,
+            }
+          })
+        },
+        updateExpense(expense: Expense) {
+          set((state) => {
+            const newExpenses = state.expenses
+            const expIndex = state.expenses.findIndex((item) => item.id === expense.id)
+            const oldExp = state.expenses[expIndex]
+
+            newExpenses[expIndex] = expense
+
+            if (oldExp.account === expense.account) {
+              return {
+                ...state,
+                expenses: newExpenses,
+              }
+            }
+
+            const tempTotals = subtractFromAccountTotalsHandler(state.accountTotals, oldExp.account, oldExp.amount)
+            const newAccountTotals = addToAccountTotalsHandler(tempTotals, expense.account, expense.amount)
 
             return {
               ...state,

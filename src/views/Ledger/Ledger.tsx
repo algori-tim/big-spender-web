@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react'
 import { Expense } from '../../types/expense.type'
-import { AccountCategory } from '../../types/accountCategory.type'
 import { getAccountsCategories, getAnyCarryovers, getLastLedger } from '../../Helpers/DataHelpers'
 import { useLedgerStore } from './LedgerStore'
 import Expenses from './components/Expenses'
 import Totals from './components/Totals'
 import './Ledger.css'
+import IconButton, { IconButtonColors } from '../../components/IconButton/IconButton'
 
 //TO DO:
 // Add/Remove account or expense type
 // reconsider how we're managing carryovers.
 // look at saving ledger in actual remote location
 const Ledger = () => {
-  const { addExpense, clearExpenses, clearAccountTotals, createLedgerEntry } = useLedgerStore()
+  const { addExpense, clearExpenses, clearAccountTotals, createLedgerEntry, setAccountCategories, accountCategories } =
+    useLedgerStore()
 
-  const [categories, setCategories] = useState<AccountCategory[]>([])
   const [selectedCategory, setSelectedCategory] = useState<number>(0)
 
   useEffect(() => {
     const setDropdowns = async () => {
       console.log('setting category data')
       const data = await getAccountsCategories()
-      setCategories(data)
+      setAccountCategories(data)
     }
 
     const getCarryovers = async () => {
@@ -79,13 +79,12 @@ const Ledger = () => {
 
   const handleSaveData = () => {
     const ledger = createLedgerEntry()
-    localStorage.setItem('LEDGER', JSON.stringify(ledger))
-    // alert('We pretend this is saved to the cloud...')
+    localStorage.setItem(`LEDGER-${new Date().toLocaleDateString()}`, JSON.stringify(ledger))
     clearExpenses()
     clearAccountTotals()
   }
 
-  return categories ? (
+  return accountCategories.length > 0 ? (
     <article>
       <form className='inputs-container'>
         <h3 className='imputs-label'>ADD NEW ITEM</h3>
@@ -96,7 +95,7 @@ const Ledger = () => {
         <div>
           <label htmlFor='account-input'>Account:</label>
           <select id='account-input' className='input' onChange={(e) => setSelectedCategory(e.target.selectedIndex)}>
-            {categories.map((cat) => (
+            {accountCategories.map((cat) => (
               <option key={cat.name} value={cat.name}>
                 {cat.name}
               </option>
@@ -106,7 +105,7 @@ const Ledger = () => {
         <div>
           <label htmlFor='expense-type-input'>Expense Type:</label>
           <select id='expense-type-input' className='input'>
-            {categories[selectedCategory]?.subCategories.map((cat) => (
+            {accountCategories[selectedCategory]?.subCategories.map((cat) => (
               <option key={cat} value={cat}>
                 {cat}
               </option>
@@ -122,20 +121,29 @@ const Ledger = () => {
           <input type='text' id='note-input' className='input' />
         </div>
         <div className=''>
-          <button className='add-item-button ledger-button' onClick={handleAddItem}>
-            <span className='material-symbols-outlined'>add_task</span>
-          </button>
+          <IconButton
+            icon='icons/ledger/add.svg'
+            color={IconButtonColors.green}
+            iconAlt='Delete ledger entries.'
+            onClick={handleAddItem}
+          />
         </div>
       </form>
       <Expenses />
       <Totals />
       <div className='button-container'>
-        <button className='clear-data-button ledger-button' onClick={handleClearData}>
-          <span className='material-symbols-outlined'>delete_history</span>
-        </button>
-        <button className='save-data-button ledger-button' onClick={handleSaveData}>
-          <span className='material-symbols-outlined'>save</span>
-        </button>
+        <IconButton
+          icon='icons/ledger/delete.svg'
+          color={IconButtonColors.red}
+          iconAlt='Delete ledger entries.'
+          onClick={handleClearData}
+        />
+        <IconButton
+          icon='icons/ledger/save.svg'
+          color={IconButtonColors.green}
+          iconAlt='Save ledger entries.'
+          onClick={handleSaveData}
+        />
       </div>
     </article>
   ) : (

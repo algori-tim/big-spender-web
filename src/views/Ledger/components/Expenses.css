@@ -1,0 +1,28 @@
+.table-container {
+  height: 50vh;
+  width: 85%;
+  overflow-y: scroll;
+  background-color: #e4e4e4;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.ledger-row-data {
+  border: 1px solid #c5c5c5;
+  text-align: left;
+  padding: 6px;
+}
+
+.header-row,
+.body-row:nth-child(odd) {
+  background-color: #f8f7f7;
+}
+
+.ledger-row-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

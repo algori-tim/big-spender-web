@@ -1,0 +1,26 @@
+.icon-button {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+}
+
+.icon-button[data-color='red'] {
+  background-color: #e69999;
+}
+
+.icon-button[data-color='green'] {
+  background-color: #99e699;
+}
+
+.icon-button[data-color='yellow'] {
+  background-color: #e6ce99;
+}
+
+.icon-button:hover,
+.icon-button:focus {
+  box-shadow: 0 0 5px 3px #b8d6d3;
+  opacity: 80%;
+}

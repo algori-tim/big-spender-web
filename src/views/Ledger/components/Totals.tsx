@@ -1,8 +1,6 @@
-import '../Ledger.css'
 import { useLedgerStore } from '../LedgerStore'
+import './Totals.css'
 
-//TO DO:
-// Fix applied amount amount
 const Totals = () => {
   const { accountTotals, reconcileAccountBy } = useLedgerStore()
 
@@ -15,7 +13,7 @@ const Totals = () => {
   return (
     <div className='totals-container'>
       {Object.entries(accountTotals).map(([acct, total]) => (
-        <div key={acct} className='totals-item' id={`totals-item-${acct}`}>
+        <div key={`${acct}total`} className='totals-item' id={`totals-item-${acct}`}>
           <h4 className='totals-item-header'>{acct}</h4>
           <table>
             <tbody>
@@ -38,7 +36,7 @@ const Totals = () => {
               </tr>
             </tbody>
           </table>
-          <button className='reconcile-button ledger-button' onClick={() => handleReconcile(acct)}>
+          <button className='reconcile-button' onClick={() => handleReconcile(acct)}>
             Reconcile
           </button>
         </div>

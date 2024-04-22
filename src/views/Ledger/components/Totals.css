@@ -1,0 +1,60 @@
+.totals-container {
+  border: 2px solid #e4dfdc;
+  display: flex;
+  padding: 15px;
+  gap: 15px;
+  width: 90%;
+  overflow-x: scroll;
+}
+
+.totals-item {
+  background-color: #e4dfdc;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: end;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.reconciled-amount {
+  width: 80px;
+}
+
+.totals-item-header {
+  text-align: center;
+  border-bottom: 1px solid darkgray;
+  width: 100%;
+}
+
+.reconcile-data {
+  text-align: center;
+}
+
+.reconcile-title {
+  text-align: end;
+}
+
+.reconcile-button {
+  background-color: #99e699;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+  height: 30px;
+  width: 100px;
+}
+
+.reconcile-button:hover,
+.reconcile-button:focus {
+  box-shadow: 0 0 5px 3px #b8d6d3;
+  opacity: 80%;
+}
+
+.reconcile-button {
+  width: 100%;
+}

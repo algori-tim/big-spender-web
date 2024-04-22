@@ -1,0 +1,32 @@
+::backdrop {
+  background-color: rgb(56, 53, 48);
+  opacity: 0.8;
+}
+
+.edit-expense-modal {
+  align-self: center;
+  justify-self: center;
+  padding: 1rem;
+  border: solid 1px black;
+  border-radius: 15px;
+}
+
+.edit-inputs-form,
+.edit-inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.edit-input {
+  flex-grow: 1;
+  height: 25px;
+  width: 100%;
+}
+
+.edit-button-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
