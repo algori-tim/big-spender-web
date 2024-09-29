@@ -58,7 +58,7 @@
   },
   {
     "name": "Car",
-    "subCategories": ["Oil Changes", "Tires", "Washes", "Unexpected Repairs"]
+    "subCategories": ["Oil Changes", "Tires", "Washes", "Unexpected Repairs", "DMV"]
   },
   {
     "name": "Unplanned Expenses",
@@ -66,7 +66,7 @@
   },
   {
     "name": "Sinking",
-    "subCategories": ["AAA"]
+    "subCategories": ["AAA", "Electronics"]
   },
   {
     "name": "Unallocated",
